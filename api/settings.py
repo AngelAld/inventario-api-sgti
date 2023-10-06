@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'corsheaders',
     'rest_framework',
+    'django_filters',
     'coreapi',
     'inventario',
     'django.contrib.staticfiles',
@@ -134,8 +135,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "https://example.com",
     "http://127.0.0.1:9000",
+    "http://192.168.10.254:5173",
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }

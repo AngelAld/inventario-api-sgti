@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from rest_framework.pagination import LimitOffsetPagination
 from .serializer import AreaSerializer, CategoriaSerializer, MarcaSerializer, ItemSerializer
 from .models import Area, Categoria, Marca, Item
-
+from django_filters.rest_framework import DjangoFilterBackend
 # Create your views here.
 
 
@@ -25,4 +25,6 @@ class MarcaView(viewsets.ModelViewSet):
 class ItemView(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['area_id']
     pagination_class = LimitOffsetPagination
